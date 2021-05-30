@@ -51,14 +51,60 @@ public class GroupsTest {
         assertThat(list).containsExactly("경영지원본부", "인사팀", "총무팀", "법무팀");
     }
 
+    @DisplayName("부서정보만 반환")
+    @Test
+    public void test2() {
+        Groups groups = groupsRepository.findByDeptCode("B2B2");
+
+        recursive(groups);
+
+        assertThat(list).containsExactly("모바일개발팀");
+    }
+
+    @DisplayName("부서정보와 부서원 반환-1")
+    @Test
+    public void test3() {
+        Groups groups = groupsRepository.findByDeptCode("B2B2");
+
+        recursiveWithMember(groups);
+
+        assertThat(list).containsExactly("모바일개발팀", "모바일개발 인원1");
+    }
+
+    @DisplayName("부서정보와 부서원 반환-2")
+    @Test
+    public void test4() {
+        Groups groups = groupsRepository.findByDeptCode("A");
+
+        recursiveWithMember(groups);
+
+        assertThat(list).containsExactly(
+                "경영지원본부",
+                "인사팀", "총무팀", "총무팀 인원1",
+                "법무팀", "법무팀 인원1", "법무팀 인원2");
+    }
+
     private void recursive(Groups groups) {
         if(groups == null) return;
-        list.add(groups.getName());
-//      System.out.println(g.getName());
+        if(groups.getType() != GroupType.Member)
+            list.add(groups.getName());
+//        System.out.println(g.getName());
 
         for(Groups children : groups.getChildren()) {
             if(children.getParent() != null) {
                 recursive(children);
+            }
+        }
+    }
+
+    private void recursiveWithMember(Groups groups) {
+        if(groups == null) return;
+        list.add(groups.getName());
+//        System.out.println(g.getName());
+
+        for(Groups children : groups.getChildren()) {
+            if(children.getParent() != null) {
+                recursiveWithMember(children);
             }
         }
     }
