@@ -53,7 +53,7 @@ public class GroupsTest {
     @DisplayName("부서코드 파라미터를 추가했을때 해당부서를 포함한 하위부서를 응답한다-2")
     @Test
     public void test1() {
-        Groups groups = groupsRepository.findByDeptCode("A");
+        Groups groups = groupsRepository.findByDeptCode("A").get();
 
         recursive(groups, true);
 
@@ -63,7 +63,7 @@ public class GroupsTest {
     @DisplayName("부서정보만 반환")
     @Test
     public void test2() {
-        Groups groups = groupsRepository.findByDeptCode("B2B2");
+        Groups groups = groupsRepository.findByDeptCode("B2B2").get();
 
         recursive(groups, true);
 
@@ -73,7 +73,7 @@ public class GroupsTest {
     @DisplayName("부서정보와 부서원 반환-1")
     @Test
     public void test3() {
-        Groups groups = groupsRepository.findByDeptCode("B2B2");
+        Groups groups = groupsRepository.findByDeptCode("B2B2").get();
 
         recursive(groups, false);
 
@@ -83,7 +83,7 @@ public class GroupsTest {
     @DisplayName("부서정보와 부서원 반환-2")
     @Test
     public void test4() {
-        Groups groups = groupsRepository.findByDeptCode("A");
+        Groups groups = groupsRepository.findByDeptCode("A").get();
 
         recursive(groups, false);
 

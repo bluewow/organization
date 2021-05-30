@@ -5,6 +5,8 @@ import com.daou.demo.organization.controller.dto.ResponseDto;
 import com.daou.demo.organization.domain.GroupType;
 import com.daou.demo.organization.domain.Groups;
 import com.daou.demo.organization.repository.GroupsRepository;
+import com.daou.demo.organization.util.BusinessException;
+import com.daou.demo.organization.util.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +24,8 @@ public class OrganizationService {
             responseDto = ResponseDto.newInstance(groups);
             recursive(groups, dto.getDeptOnly(), responseDto);
         } else {
-            Groups groups = groupsRepository.findByDeptCode(dto.getDeptCode());
+            Groups groups = groupsRepository.findByDeptCode(dto.getDeptCode())
+                    .orElseThrow(() -> new BusinessException(ErrorCode.ERROR_CODE_001));
             responseDto = ResponseDto.newInstance(groups);
             recursive(groups, dto.getDeptOnly(), responseDto);
         }
