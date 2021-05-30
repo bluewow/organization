@@ -1,5 +1,8 @@
 package com.daou.demo.organization;
 
+import com.daou.demo.organization.domain.GroupType;
+import com.daou.demo.organization.domain.Groups;
+import com.daou.demo.organization.repository.GroupsRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -1,4 +1,4 @@
-package com.daou.demo.organization;
+package com.daou.demo.organization.domain;
 
 public enum GroupType {
     Company,

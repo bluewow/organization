@@ -1,5 +1,6 @@
-package com.daou.demo.organization;
+package com.daou.demo.organization.repository;
 
+import com.daou.demo.organization.domain.Groups;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
