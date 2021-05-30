@@ -26,6 +26,8 @@ dependencies {
     runtimeOnly 'com.h2database:h2'
     runtimeOnly 'org.postgresql:postgresql'
     annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'io.rest-assured:rest-assured:4.2.0'
+    testImplementation 'io.rest-assured:rest-assured-all:4.2.0'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 

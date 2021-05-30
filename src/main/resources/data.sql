@@ -38,3 +38,8 @@ INSERT INTO public.groups(group_id, parent_id, name, dept_code, type )
 VALUES (17, 4, '총무팀 인원1', null, 'Member');
 INSERT INTO public.groups(group_id, parent_id, name, dept_code, type )
 VALUES (18, 12, '플랫폼서비스 인원1', null, 'Member');
+
+INSERT INTO public.groups(group_id, parent_id, name, dept_code, type )
+VALUES (19, 5, '법무팀 특별', 'A3A1', 'Department');
+INSERT INTO public.groups(group_id, parent_id, name, dept_code, type )
+VALUES (20, 19, '법무팀 특별 감사', 'A3A1A1', 'Department');

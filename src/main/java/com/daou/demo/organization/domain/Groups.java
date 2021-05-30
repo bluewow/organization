@@ -1,4 +1,4 @@
-package com.daou.demo.organization;
+package com.daou.demo.organization.domain;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
