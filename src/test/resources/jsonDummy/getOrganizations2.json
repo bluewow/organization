@@ -1,0 +1,29 @@
+{
+  "id": 7,
+  "type": "Department",
+  "name": "플랫폼개발부",
+  "code": "B1",
+  "children": [
+    {
+      "id": 9,
+      "type": "Department",
+      "name": "비즈플랫폼팀",
+      "code": "B1B1",
+      "children": []
+    },
+    {
+      "id": 10,
+      "type": "Department",
+      "name": "비즈서비스팀",
+      "code": "B1B2",
+      "children": []
+    },
+    {
+      "id": 11,
+      "type": "Department",
+      "name": "그룹웨어개발팀",
+      "code": "B1B3",
+      "children": []
+    }
+  ]
+}

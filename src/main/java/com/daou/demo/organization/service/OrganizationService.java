@@ -17,13 +17,21 @@ public class OrganizationService {
     public ResponseDto getOrganizations(RequestDto dto) {
         ResponseDto responseDto = null;
 
-        if(dto.getDeptCode() == null) {
+        if(deptCodeIsNull(dto)) {
             Groups groups = groupsRepository.findRootByParentIdIsNull();
             responseDto = ResponseDto.newInstance(groups);
-            recursive(groups, true, responseDto);
+            recursive(groups, dto.getDeptOnly(), responseDto);
+        } else {
+            Groups groups = groupsRepository.findByDeptCode(dto.getDeptCode());
+            responseDto = ResponseDto.newInstance(groups);
+            recursive(groups, dto.getDeptOnly(), responseDto);
         }
 
         return responseDto;
+    }
+
+    private boolean deptCodeIsNull(RequestDto dto) {
+        return dto.getDeptCode() == null;
     }
 
     private void recursive(Groups groups, boolean departmentOnly, ResponseDto responseDto) {
