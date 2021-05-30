@@ -33,7 +33,7 @@ public class GroupsTest {
     public void test() {
         Groups groups = groupsRepository.findRootByParentIdIsNull();
 
-        recursive(groups);
+        recursive(groups, true);
 
         assertThat(list).containsExactly(
                 "ABC 회사", "경영지원본부", "인사팀", "총무팀", "법무팀",
@@ -46,7 +46,7 @@ public class GroupsTest {
     public void test1() {
         Groups groups = groupsRepository.findByDeptCode("A");
 
-        recursive(groups);
+        recursive(groups, true);
 
         assertThat(list).containsExactly("경영지원본부", "인사팀", "총무팀", "법무팀");
     }
@@ -56,7 +56,7 @@ public class GroupsTest {
     public void test2() {
         Groups groups = groupsRepository.findByDeptCode("B2B2");
 
-        recursive(groups);
+        recursive(groups, true);
 
         assertThat(list).containsExactly("모바일개발팀");
     }
@@ -66,7 +66,7 @@ public class GroupsTest {
     public void test3() {
         Groups groups = groupsRepository.findByDeptCode("B2B2");
 
-        recursiveWithMember(groups);
+        recursive(groups, false);
 
         assertThat(list).containsExactly("모바일개발팀", "모바일개발 인원1");
     }
@@ -76,7 +76,7 @@ public class GroupsTest {
     public void test4() {
         Groups groups = groupsRepository.findByDeptCode("A");
 
-        recursiveWithMember(groups);
+        recursive(groups, false);
 
         assertThat(list).containsExactly(
                 "경영지원본부",
@@ -84,28 +84,26 @@ public class GroupsTest {
                 "법무팀", "법무팀 인원1", "법무팀 인원2");
     }
 
-    private void recursive(Groups groups) {
+    private void recursive(Groups groups, Boolean departmentOnly) {
         if(groups == null) return;
-        if(groups.getType() != GroupType.Member)
+        if(isDepartMent(departmentOnly, groups))
             list.add(groups.getName());
-//        System.out.println(g.getName());
 
         for(Groups children : groups.getChildren()) {
             if(children.getParent() != null) {
-                recursive(children);
+                recursive(children, departmentOnly);
             }
         }
     }
 
-    private void recursiveWithMember(Groups groups) {
-        if(groups == null) return;
-        list.add(groups.getName());
-//        System.out.println(g.getName());
-
-        for(Groups children : groups.getChildren()) {
-            if(children.getParent() != null) {
-                recursiveWithMember(children);
-            }
+    private Boolean isDepartMent(Boolean departmentOnly, Groups g) {
+        if(departmentOnly) {
+            if(g.getType() == GroupType.Member)
+                return false;
+            else
+                return true;
         }
+
+        return true;
     }
 }
