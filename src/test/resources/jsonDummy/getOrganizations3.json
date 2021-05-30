@@ -1,0 +1,45 @@
+{
+  "id": 2,
+  "type": "Division",
+  "name": "경영지원본부",
+  "code": "A",
+  "children": [
+    {
+      "id": 3,
+      "type": "Department",
+      "name": "인사팀",
+      "code": "A1",
+      "children": []
+    },
+    {
+      "id": 4,
+      "type": "Department",
+      "name": "총무팀",
+      "code": "A2",
+      "children": []
+    },
+    {
+      "id": 5,
+      "type": "Department",
+      "name": "법무팀",
+      "code": "A3",
+      "children": [
+        {
+          "id": 19,
+          "type": "Department",
+          "name": "법무팀 특별",
+          "code": "A3A1",
+          "children": [
+            {
+              "id": 20,
+              "type": "Department",
+              "name": "법무팀 특별 감사",
+              "code": "A3A1A1",
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

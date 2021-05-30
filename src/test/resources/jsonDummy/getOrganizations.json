@@ -1,0 +1,111 @@
+{
+  "id": 1,
+  "type": "Company",
+  "name": "ABC 회사",
+  "children": [
+    {
+      "id": 2,
+      "type": "Division",
+      "name": "경영지원본부",
+      "code": "A",
+      "children": [
+        {
+          "id": 3,
+          "type": "Department",
+          "name": "인사팀",
+          "code": "A1",
+          "children": []
+        },
+        {
+          "id": 4,
+          "type": "Department",
+          "name": "총무팀",
+          "code": "A2",
+          "children": []
+        },
+        {
+          "id": 5,
+          "type": "Department",
+          "name": "법무팀",
+          "code": "A3",
+          "children": [
+            {
+              "id": 19,
+              "type": "Department",
+              "name": "법무팀 특별",
+              "code": "A3A1",
+              "children": [
+                {
+                  "id": 20,
+                  "type": "Department",
+                  "name": "법무팀 특별 감사",
+                  "code": "A3A1A1",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "type": "Division",
+      "name": "SW 개발본부",
+      "code": "B",
+      "children": [
+        {
+          "id": 7,
+          "type": "Department",
+          "name": "플랫폼개발부",
+          "code": "B1",
+          "children": [
+            {
+              "id": 9,
+              "type": "Department",
+              "name": "비즈플랫폼팀",
+              "code": "B1B1",
+              "children": []
+            },
+            {
+              "id": 10,
+              "type": "Department",
+              "name": "비즈서비스팀",
+              "code": "B1B2",
+              "children": []
+            },
+            {
+              "id": 11,
+              "type": "Department",
+              "name": "그룹웨어개발팀",
+              "code": "B1B3",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "type": "Department",
+          "name": "비즈서비스개발부",
+          "code": "B2",
+          "children": [
+            {
+              "id": 12,
+              "type": "Department",
+              "name": "플랫폼서비스팀",
+              "code": "B2B1",
+              "children": []
+            },
+            {
+              "id": 13,
+              "type": "Department",
+              "name": "모바일개발팀",
+              "code": "B2B2",
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
