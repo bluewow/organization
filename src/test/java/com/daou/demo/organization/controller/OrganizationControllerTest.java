@@ -81,17 +81,28 @@ class OrganizationControllerTest {
                 .body("message", equalTo(ErrorCode.ERROR_CODE_001.getMessage()));
     }
 
-    @DisplayName("검색어 추가시 검색된 부서들과 관계된 상위부서를 포함하여 반환한다")
+    @DisplayName("검색어 추가시 검색된 부서들과 관계된 상위부서를 포함하여 반환한다 - 1")
     @Test
     public void getOrganizations4() throws IOException {
         Response response = given()
-                .param("deptOnly", true)
                 .param("searchType", "dept")
                 .param("searchKeyword", "플랫폼")
                 .when()
                 .get(address);
 
         checkJsonData(response, "organizationJsonData/getOrganizations4.json");
+    }
+
+    @DisplayName("검색어 추가시 검색된 부서들과 관계된 상위부서를 포함하여 반환한다 - 2")
+    @Test
+    public void getOrganizations5() throws IOException {
+        Response response = given()
+                .param("searchType", "dept")
+                .param("searchKeyword", "개발")
+                .when()
+                .get(address);
+
+        checkJsonData(response, "organizationJsonData/getOrganizations5.json");
     }
 
     private File getFile(String path) throws IOException {

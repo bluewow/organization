@@ -1,0 +1,43 @@
+{
+  "id": 1,
+  "type": "Company",
+  "name": "ABC 회사",
+  "children": [
+    {
+      "id": 6,
+      "type": "Division",
+      "name": "SW 개발본부",
+      "code": "B",
+      "children": [
+        {
+          "id": 7,
+          "type": "Department",
+          "name": "플랫폼개발부",
+          "code": "B1",
+          "children": [
+            {
+              "id": 11,
+              "type": "Department",
+              "name": "그룹웨어개발팀",
+              "code": "B1B3"
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "type": "Department",
+          "name": "비즈서비스개발부",
+          "code": "B2",
+          "children": [
+            {
+              "id": 13,
+              "type": "Department",
+              "name": "모바일개발팀",
+              "code": "B2B2"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
