@@ -40,7 +40,7 @@ public class GroupsTest {
     @DisplayName("부서코드 파라미터를 추가했을때 해당부서를 포함한 하위부서를 응답한다-1")
     @Test
     public void test() {
-        Groups groups = groupsRepository.findRootByParentIdIsNull();
+        Groups groups = groupsRepository.findRootByParentIdIsNull().get();
 
         recursive(groups, true);
 

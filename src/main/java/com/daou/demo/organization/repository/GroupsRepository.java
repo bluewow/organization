@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface GroupsRepository extends JpaRepository<Groups, Long> {
     Optional<Groups> findByDeptCode(String deptCode);
-    Groups findRootByParentIdIsNull();
+    Optional<Groups> findRootByParentIdIsNull();
 
     List<Groups> findByNameContains(String searchKeyword);
 }

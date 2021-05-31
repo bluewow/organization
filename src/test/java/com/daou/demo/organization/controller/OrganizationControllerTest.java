@@ -1,7 +1,6 @@
 package com.daou.demo.organization.controller;
 
 import com.daou.demo.organization.controller.dto.ResponseDto;
-import com.daou.demo.organization.util.BusinessException;
 import com.daou.demo.organization.util.ErrorCode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.response.Response;
@@ -11,7 +10,6 @@ import org.springframework.core.io.ClassPathResource;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
 
 import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -30,10 +28,7 @@ class OrganizationControllerTest {
                 .when()
                 .get(address);
 
-        ObjectMapper objectMapper = new ObjectMapper();
-        ResponseDto source = objectMapper.readValue(getFile("jsonDummy/getOrganizations.json"), ResponseDto.class);
-        ResponseDto target = objectMapper.readValue(response.asString(), ResponseDto.class);
-        assertThat(target).isEqualTo(source);
+        checkJsonData(response, "organizationJsonData/getOrganizations.json");
     }
 
     @DisplayName("deptOnly 가 false 인 경우 부서원도 함께 출력된다")
@@ -44,10 +39,7 @@ class OrganizationControllerTest {
                 .when()
                 .get(address);
 
-        ObjectMapper objectMapper = new ObjectMapper();
-        ResponseDto source = objectMapper.readValue(getFile("jsonDummy/getOrganizations1.json"), ResponseDto.class);
-        ResponseDto target = objectMapper.readValue(response.asString(), ResponseDto.class);
-        assertThat(target).isEqualTo(source);
+        checkJsonData(response, "organizationJsonData/getOrganizations1.json");
     }
 
     @DisplayName("deptCode 부서를 포함하여 하위부서를 응답한다 - 1")
@@ -59,10 +51,7 @@ class OrganizationControllerTest {
                 .when()
                 .get(address);
 
-        ObjectMapper objectMapper = new ObjectMapper();
-        ResponseDto source = objectMapper.readValue(getFile("jsonDummy/getOrganizations2.json"), ResponseDto.class);
-        ResponseDto target = objectMapper.readValue(response.asString(), ResponseDto.class);
-        assertThat(target).isEqualTo(source);
+        checkJsonData(response, "organizationJsonData/getOrganizations2.json");
     }
 
     @DisplayName("deptCode 부서를 포함하여 하위부서를 응답한다 - 2")
@@ -74,13 +63,10 @@ class OrganizationControllerTest {
                 .when()
                 .get(address);
 
-        ObjectMapper objectMapper = new ObjectMapper();
-        ResponseDto source = objectMapper.readValue(getFile("jsonDummy/getOrganizations3.json"), ResponseDto.class);
-        ResponseDto target = objectMapper.readValue(response.asString(), ResponseDto.class);
-        assertThat(target).isEqualTo(source);
+        checkJsonData(response, "organizationJsonData/getOrganizations3.json");
     }
 
-    @DisplayName("deptCode 부서를 포함하여 하위부서를 응답한다 - 2")
+    @DisplayName("business exception 메시지 확인")
     @Test
     public void getOrganizationsExceptionTest() {
         Response response = given()
@@ -95,8 +81,28 @@ class OrganizationControllerTest {
                 .body("message", equalTo(ErrorCode.ERROR_CODE_001.getMessage()));
     }
 
+    @DisplayName("검색어 추가시 검색된 부서들과 관계된 상위부서를 포함하여 반환한다")
+    @Test
+    public void getOrganizations4() throws IOException {
+        Response response = given()
+                .param("deptOnly", true)
+                .param("searchType", "dept")
+                .param("searchKeyword", "플랫폼")
+                .when()
+                .get(address);
+
+        checkJsonData(response, "organizationJsonData/getOrganizations4.json");
+    }
 
     private File getFile(String path) throws IOException {
         return new ClassPathResource(path).getFile();
+    }
+
+
+    private void checkJsonData(Response response, String path) throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        ResponseDto source = objectMapper.readValue(getFile(path), ResponseDto.class);
+        ResponseDto target = objectMapper.readValue(response.asString(), ResponseDto.class);
+        assertThat(target).isEqualTo(source);
     }
 }

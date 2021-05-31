@@ -20,9 +20,18 @@ public class OrganizationController {
 
     @GetMapping("/organizations")
     public ResponseDto getOrganizations(RequestDto dto) {
+        ResponseDto responseDto;
 
-        ResponseDto responseDto = organizationService.getOrganizations(dto);
+        if(searchKeywordIsNotNull(dto)) {
+            responseDto = organizationService.getOrganizationsBySearch(dto);
+        } else {
+            responseDto = organizationService.getOrganizations(dto);
+        }
 
         return responseDto;
+    }
+
+    private boolean searchKeywordIsNotNull(RequestDto dto) {
+        return dto.getSearchKeyword() != null;
     }
 }
