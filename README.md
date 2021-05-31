@@ -7,7 +7,8 @@
     - src/main/resources/application.properties 의 datasource 의 username, password 를 변경한다
 2. 서버 구동
     - ./gradlew bootRun
-    
+3. 
+    - http://localhost:9000/api/organizations
 
 ### 기타
 - server port = 9000 
