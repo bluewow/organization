@@ -15,13 +15,13 @@ import java.util.List;
 @NoArgsConstructor
 @EqualsAndHashCode
 public class ResponseDto implements Comparable<ResponseDto>{
-    private Long id;
+    private Integer id;
     private GroupType type;
     private String name;
     private String code;
     private List<ResponseDto> children = new ArrayList<>();
 
-    private ResponseDto(Long id, GroupType type, String name, String code) {
+    private ResponseDto(Integer id, GroupType type, String name, String code) {
         this.id = id;
         this.type = type;
         this.name = name;
