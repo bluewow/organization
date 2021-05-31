@@ -2,11 +2,9 @@ package com.daou.demo.organization.controller;
 
 import com.daou.demo.organization.controller.dto.RequestDto;
 import com.daou.demo.organization.controller.dto.ResponseDto;
-import com.daou.demo.organization.service.OrganizationService;
-import com.daou.demo.organization.util.BusinessException;
-import com.daou.demo.organization.util.ErrorCode;
+import com.daou.demo.organization.service.OrganizationGetSearchService;
+import com.daou.demo.organization.service.OrganizationGetService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,22 +14,23 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class OrganizationController {
 
-    private final OrganizationService organizationService;
+    private final OrganizationGetService organizationGetService;
+    private final OrganizationGetSearchService organizationGetSearchService;
 
     @GetMapping("/organizations")
     public ResponseDto getOrganizations(RequestDto dto) {
         ResponseDto responseDto;
 
-        if(searchKeywordIsNotNull(dto)) {
-            responseDto = organizationService.getOrganizationsBySearch(dto);
+        if(hasSearchKeyworld(dto)) {
+            responseDto = organizationGetSearchService.get(dto);
         } else {
-            responseDto = organizationService.getOrganizations(dto);
+            responseDto = organizationGetService.get(dto);
         }
 
         return responseDto;
     }
 
-    private boolean searchKeywordIsNotNull(RequestDto dto) {
+    private boolean hasSearchKeyworld(RequestDto dto) {
         return dto.getSearchKeyword() != null;
     }
 }

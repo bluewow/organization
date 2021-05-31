@@ -10,20 +10,6 @@
       "code": "B",
       "children": [
         {
-          "id": 8,
-          "type": "Department",
-          "name": "비즈서비스개발부",
-          "code": "B2",
-          "children": [
-            {
-              "id": 12,
-              "type": "Department",
-              "name": "플랫폼서비스팀",
-              "code": "B2B1"
-            }
-          ]
-        },
-        {
           "id": 7,
           "type": "Department",
           "name": "플랫폼개발부",
@@ -34,6 +20,20 @@
               "type": "Department",
               "name": "비즈플랫폼팀",
               "code": "B1B1"
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "type": "Department",
+          "name": "비즈서비스개발부",
+          "code": "B2",
+          "children": [
+            {
+              "id": 12,
+              "type": "Department",
+              "name": "플랫폼서비스팀",
+              "code": "B2B1"
             }
           ]
         }
