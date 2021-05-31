@@ -14,7 +14,7 @@ import java.util.List;
 @JsonInclude(Include.NON_EMPTY)
 @NoArgsConstructor
 @EqualsAndHashCode
-public class ResponseDto {
+public class ResponseDto implements Comparable<ResponseDto>{
     private Long id;
     private GroupType type;
     private String name;
@@ -30,5 +30,14 @@ public class ResponseDto {
 
     public static ResponseDto newInstance(Groups groups) {
         return new ResponseDto(groups.getId(), groups.getType(), groups.getName(), groups.getDeptCode());
+    }
+
+    @Override
+    public int compareTo(ResponseDto responseDto) {
+        if(this.getType().getI() < responseDto.getType().getI())
+            return 1;
+        else if(this.getType().getI() > responseDto.getType().getI())
+            return -1;
+        return 0;
     }
 }

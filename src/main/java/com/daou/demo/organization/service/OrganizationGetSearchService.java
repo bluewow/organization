@@ -14,6 +14,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
+ * 조직도 Search 반환 서비스
+ *
  * depthCode 에 대한 throw 처리
  * deptOnly 조건 처리가 들어있지 않음 (부서 정보만 응답하는 것으로 이해했습니다)
  * 부서원 검색시 부서원이 포함된 부서로 응답
@@ -22,6 +24,7 @@ import java.util.stream.Collectors;
 @Service
 public class OrganizationGetSearchService {
 
+    private final OrganizationCommonService commonService;
     private final GroupsRepository groupsRepository;
     
     public ResponseDto get(RequestDto dto) {
@@ -41,6 +44,7 @@ public class OrganizationGetSearchService {
         set.remove(groups);
         setDataOrdering(responseDto, set);
 
+        commonService.recursiveSort(responseDto);
         return responseDto;
     }
 

@@ -10,19 +10,17 @@ import com.daou.demo.organization.util.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- *
+ *  조직도 반환 서비스
  */
 @RequiredArgsConstructor
 @Service
 public class OrganizationGetService {
 
+    private final OrganizationCommonService commonService;
     private final GroupsRepository groupsRepository;
 
     public ResponseDto get(RequestDto dto) {
@@ -40,8 +38,10 @@ public class OrganizationGetService {
             recursive(groups, dto.getDeptOnly(), responseDto);
         }
 
+        commonService.recursiveSort(responseDto);
         return responseDto;
     }
+
 
     private boolean deptCodeIsNull(RequestDto dto) {
         return dto.getDeptCode() == null;

@@ -1,5 +1,6 @@
 package com.daou.demo.organization;
 
+import com.daou.demo.organization.controller.dto.ResponseDto;
 import com.daou.demo.organization.domain.GroupType;
 import com.daou.demo.organization.domain.Groups;
 import com.daou.demo.organization.repository.GroupsRepository;
@@ -11,10 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -129,6 +127,18 @@ public class GroupsTest {
         assertThat(set).hasSize(3);
         assertThat(set).contains(
                 "ABC 회사", "SW 개발본부","플랫폼개발부");
+    }
+
+    @DisplayName("ResponseDto 내의 list 정렬 테스트")
+    @Test
+    public void test7() {
+        ArrayList<ResponseDto> list = new ArrayList<>();
+        list.add(ResponseDto.newInstance(Groups.builder().type(GroupType.Company).name("Company").build()));
+        list.add(ResponseDto.newInstance(Groups.builder().type(GroupType.Member).name("Member").build()));
+
+        Collections.sort(list);
+        assertThat(list.get(0).getName()).isEqualTo("Member");
+        assertThat(list.get(1).getName()).isEqualTo("Company");
     }
 
     private void reverseRecursive(Groups groups) {
