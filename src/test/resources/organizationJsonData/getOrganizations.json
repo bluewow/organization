@@ -13,38 +13,19 @@
           "id": 3,
           "type": "Department",
           "name": "인사팀",
-          "code": "A1",
-          "children": []
+          "code": "A1"
         },
         {
           "id": 4,
           "type": "Department",
           "name": "총무팀",
-          "code": "A2",
-          "children": []
+          "code": "A2"
         },
         {
           "id": 5,
           "type": "Department",
           "name": "법무팀",
-          "code": "A3",
-          "children": [
-            {
-              "id": 19,
-              "type": "Department",
-              "name": "법무팀 특별",
-              "code": "A3A1",
-              "children": [
-                {
-                  "id": 20,
-                  "type": "Department",
-                  "name": "법무팀 특별 감사",
-                  "code": "A3A1A1",
-                  "children": []
-                }
-              ]
-            }
-          ]
+          "code": "A3"
         }
       ]
     },
@@ -64,22 +45,19 @@
               "id": 9,
               "type": "Department",
               "name": "비즈플랫폼팀",
-              "code": "B1B1",
-              "children": []
+              "code": "B1B1"
             },
             {
               "id": 10,
               "type": "Department",
               "name": "비즈서비스팀",
-              "code": "B1B2",
-              "children": []
+              "code": "B1B2"
             },
             {
               "id": 11,
               "type": "Department",
               "name": "그룹웨어개발팀",
-              "code": "B1B3",
-              "children": []
+              "code": "B1B3"
             }
           ]
         },
@@ -93,15 +71,13 @@
               "id": 12,
               "type": "Department",
               "name": "플랫폼서비스팀",
-              "code": "B2B1",
-              "children": []
+              "code": "B2B1"
             },
             {
               "id": 13,
               "type": "Department",
               "name": "모바일개발팀",
-              "code": "B2B2",
-              "children": []
+              "code": "B2B2"
             }
           ]
         }

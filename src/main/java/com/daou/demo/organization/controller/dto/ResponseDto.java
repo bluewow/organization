@@ -3,6 +3,7 @@ package com.daou.demo.organization.controller.dto;
 import com.daou.demo.organization.domain.GroupType;
 import com.daou.demo.organization.domain.Groups;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import lombok.*;
 
 import java.util.ArrayList;
@@ -10,7 +11,7 @@ import java.util.List;
 
 @Getter
 @Setter
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(Include.NON_EMPTY)
 @NoArgsConstructor
 @EqualsAndHashCode
 public class ResponseDto {

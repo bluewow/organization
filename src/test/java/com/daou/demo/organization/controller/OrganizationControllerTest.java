@@ -42,7 +42,7 @@ class OrganizationControllerTest {
         checkJsonData(response, "organizationJsonData/getOrganizations1.json");
     }
 
-    @DisplayName("deptCode 부서를 포함하여 하위부서를 응답한다 - 1")
+    @DisplayName("deptCode 에　적혀있는　부서를 포함하여 하위부서를 응답한다 - 1")
     @Test
     public void getOrganizations2() throws IOException {
         Response response = given()

@@ -61,13 +61,11 @@ public class OrganizationService {
         if(groups.getParent() == null) {
             if(groups.getType() != GroupType.Member)
                 set.add(groups); //최상위 노드를 저장하고 재귀를 종료한다
-//                set.add(ResponseDto.newInstance(groups)); //최상위 노드를 저장하고 재귀를 종료한다
 
             return;
         }
         if(groups.getType() != GroupType.Member)
             set.add(groups);
-//            set.add(ResponseDto.newInstance(groups));
 
         reverseRecursive(groups.getParent(), set);
     }

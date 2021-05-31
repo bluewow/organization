@@ -1,6 +1,6 @@
-drop table if exists public.groups cascade;
+drop table if exists groups cascade;
 
-CREATE TABLE public.groups
+CREATE TABLE groups
 (
     group_id bigint NOT NULL,
     parent_id bigint,
@@ -9,7 +9,7 @@ CREATE TABLE public.groups
     type character varying(255) COLLATE pg_catalog."default",
     CONSTRAINT groups_pkey PRIMARY KEY (group_id),
     CONSTRAINT fkfvqfb4l9r8hbfhfm515o77esh FOREIGN KEY (parent_id)
-        REFERENCES public.groups (group_id) MATCH SIMPLE
+        REFERENCES groups (group_id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
 )

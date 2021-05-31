@@ -8,22 +8,19 @@
       "id": 9,
       "type": "Department",
       "name": "비즈플랫폼팀",
-      "code": "B1B1",
-      "children": []
+      "code": "B1B1"
     },
     {
       "id": 10,
       "type": "Department",
       "name": "비즈서비스팀",
-      "code": "B1B2",
-      "children": []
+      "code": "B1B2"
     },
     {
       "id": 11,
       "type": "Department",
       "name": "그룹웨어개발팀",
-      "code": "B1B3",
-      "children": []
+      "code": "B1B3"
     }
   ]
 }
