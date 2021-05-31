@@ -13,6 +13,11 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * depthCode 에 대한 throw 처리
+ * deptOnly 조건 처리가 들어있지 않음 (부서 정보만 응답하는 것으로 이해했습니다)
+ * 부서원 검색시 부서원이 포함된 부서로 응답
+ */
 @RequiredArgsConstructor
 @Service
 public class OrganizationGetSearchService {
@@ -20,13 +25,12 @@ public class OrganizationGetSearchService {
     private final GroupsRepository groupsRepository;
     
     public ResponseDto get(RequestDto dto) {
+        validCheck(dto);
         Set<Groups> set = new LinkedHashSet<>();
 
         //검색어 관련 Groups 를 가져온다
         List<Groups> rawGroups = groupsRepository.findByNameContains(dto.getSearchKeyword());
-        List<Groups> groupsList = rawGroups.stream()
-                .filter(g -> g.getType() != GroupType.Member)
-                .collect(Collectors.toList());
+        List<Groups> groupsList = searchTypeProcess(rawGroups, dto);
 
         //reverseRecursive 를 통하여 set 에 저장한다
         groupsList.forEach(g -> reverseRecursive(g, set));
@@ -38,6 +42,29 @@ public class OrganizationGetSearchService {
         setDataOrdering(responseDto, set);
 
         return responseDto;
+    }
+
+    private List<Groups> searchTypeProcess(List<Groups> rawGroups, RequestDto dto) {
+        List<Groups> list = null;
+        if(dto.getSearchType().equals("dept"))
+            list =  rawGroups.stream()
+                    .filter(g -> g.getType() != GroupType.Member)
+                    .collect(Collectors.toList());
+
+        if(dto.getSearchType().equals("member"))
+            list =  rawGroups.stream()
+                    .filter(g -> g.getType() == GroupType.Member)
+                    .collect(Collectors.toList());
+
+        return list;
+    }
+
+    private void validCheck(RequestDto dto) {
+        if(dto.getDeptCode() != null)
+            throw new BusinessException(ErrorCode.ERROR_CODE_004);
+
+        if(dto.getSearchType() == null)
+            throw new BusinessException(ErrorCode.ERROR_CODE_003);
     }
 
     private void setDataOrdering(ResponseDto responseDto, Set<Groups> set) {
