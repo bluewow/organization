@@ -1,3 +1,5 @@
+TRUNCATE TABLE  groups;
+
 INSERT INTO groups(group_id, parent_id, name, dept_code, type )
 VALUES (1, null, 'ABC 회사', null, 'Company');
 
