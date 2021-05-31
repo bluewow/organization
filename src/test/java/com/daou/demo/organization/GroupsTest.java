@@ -77,7 +77,7 @@ public class GroupsTest {
 
         recursive(groups, false);
 
-        assertThat(list).containsExactly("모바일개발팀", "모바일개발 인원1");
+        assertThat(list).containsExactly("모바일개발팀", "개발9", "개발10");
     }
 
     @DisplayName("부서정보와 부서원 반환-2")
@@ -87,10 +87,11 @@ public class GroupsTest {
 
         recursive(groups, false);
 
-        assertThat(list).containsExactly(
-                "경영지원본부",
-                "인사팀", "총무팀", "총무팀 인원1",
-                "법무팀", "법무팀 인원1", "법무팀 인원2");
+        assertThat(list).contains(
+                "경영지원본부", "경영1",
+                "인사팀", "인사1", "인사2", "인사3",
+                "총무팀", "총무1", "총무2",
+                "법무팀", "법무1", "법무2");
     }
 
     @DisplayName("검색 파라미터 추가시(searchType, searchKeyword) " +
@@ -125,10 +126,9 @@ public class GroupsTest {
 
         groupsList.forEach(g -> reverseRecursive(g));
 
-        assertThat(set).hasSize(4);
+        assertThat(set).hasSize(3);
         assertThat(set).contains(
-                "ABC 회사", "SW 개발본부",
-                "비즈서비스개발부", "플랫폼서비스팀");
+                "ABC 회사", "SW 개발본부","플랫폼개발부");
     }
 
     private void reverseRecursive(Groups groups) {

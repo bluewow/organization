@@ -29,12 +29,47 @@ INSERT INTO public.groups(group_id, parent_id, name, dept_code, type )
 VALUES (13, 8, '모바일개발팀', 'B2B2', 'Department');
 
 INSERT INTO public.groups(group_id, parent_id, name, dept_code, type )
-VALUES (14, 13, '모바일개발 인원1', null, 'Member');
+VALUES (15, 1, '사장1', null, 'Member');
 INSERT INTO public.groups(group_id, parent_id, name, dept_code, type )
-VALUES (15, 5, '법무팀 인원1', null, 'Member');
+VALUES (16, 2, '경영1', null, 'Member');
 INSERT INTO public.groups(group_id, parent_id, name, dept_code, type )
-VALUES (16, 5, '법무팀 인원2', null, 'Member');
+VALUES (17, 3, '인사1', null, 'Member');
 INSERT INTO public.groups(group_id, parent_id, name, dept_code, type )
-VALUES (17, 4, '총무팀 인원1', null, 'Member');
+VALUES (18, 3, '인사2', null, 'Member');
 INSERT INTO public.groups(group_id, parent_id, name, dept_code, type )
-VALUES (18, 12, '플랫폼서비스 인원1', null, 'Member');
+VALUES (19, 3, '인사3', null, 'Member');
+INSERT INTO public.groups(group_id, parent_id, name, dept_code, type )
+VALUES (20, 4, '총무1', null, 'Member');
+INSERT INTO public.groups(group_id, parent_id, name, dept_code, type )
+VALUES (21, 4, '총무2', null, 'Member');
+INSERT INTO public.groups(group_id, parent_id, name, dept_code, type )
+VALUES (22, 5, '법무1', null, 'Member');
+INSERT INTO public.groups(group_id, parent_id, name, dept_code, type )
+VALUES (23, 5, '법무2', null, 'Member');
+
+INSERT INTO public.groups(group_id, parent_id, name, dept_code, type )
+VALUES (24, 6, 'SW1', null, 'Member');
+INSERT INTO public.groups(group_id, parent_id, name, dept_code, type )
+VALUES (25, 7, '플랫폼1', null, 'Member');
+INSERT INTO public.groups(group_id, parent_id, name, dept_code, type )
+VALUES (26, 8, '서비스1', null, 'Member');
+INSERT INTO public.groups(group_id, parent_id, name, dept_code, type )
+VALUES (27, 9, '개발1', null, 'Member');
+INSERT INTO public.groups(group_id, parent_id, name, dept_code, type )
+VALUES (28, 9, '개발2', null, 'Member');
+INSERT INTO public.groups(group_id, parent_id, name, dept_code, type )
+VALUES (29, 10, '개발3', null, 'Member');
+INSERT INTO public.groups(group_id, parent_id, name, dept_code, type )
+VALUES (30, 10, '개발4', null, 'Member');
+INSERT INTO public.groups(group_id, parent_id, name, dept_code, type )
+VALUES (31, 11, '개발5', null, 'Member');
+INSERT INTO public.groups(group_id, parent_id, name, dept_code, type )
+VALUES (32, 11, '개발6', null, 'Member');
+INSERT INTO public.groups(group_id, parent_id, name, dept_code, type )
+VALUES (33, 12, '개발7', null, 'Member');
+INSERT INTO public.groups(group_id, parent_id, name, dept_code, type )
+VALUES (34, 12, '개발8', null, 'Member');
+INSERT INTO public.groups(group_id, parent_id, name, dept_code, type )
+VALUES (35, 13, '개발9', null, 'Member');
+INSERT INTO public.groups(group_id, parent_id, name, dept_code, type )
+VALUES (36, 13, '개발10', null, 'Member');
