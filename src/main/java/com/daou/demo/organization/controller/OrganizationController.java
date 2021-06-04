@@ -21,7 +21,7 @@ public class OrganizationController {
     public ResponseDto getOrganizations(RequestDto dto) {
         ResponseDto responseDto;
 
-        if(hasSearchKeyworld(dto)) {
+        if(hasSearchKeyword(dto)) {
             responseDto = organizationGetSearchService.get(dto);
         } else {
             responseDto = organizationGetService.get(dto);
@@ -30,7 +30,7 @@ public class OrganizationController {
         return responseDto;
     }
 
-    private boolean hasSearchKeyworld(RequestDto dto) {
+    private boolean hasSearchKeyword(RequestDto dto) {
         return dto.getSearchKeyword() != null;
     }
 }
