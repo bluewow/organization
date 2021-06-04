@@ -1,4 +1,4 @@
-package com.daou.demo.organization.util;
+package com.daou.demo.organization.util.exception;
 
 import lombok.Getter;
 import org.springframework.http.HttpStatus;

@@ -1,7 +1,6 @@
-package com.daou.demo.organization.util;
+package com.daou.demo.organization.util.exception;
 
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 

@@ -1,9 +1,8 @@
-package com.daou.demo.organization.util;
+package com.daou.demo.organization.util.exception;
 
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.http.HttpStatus;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)

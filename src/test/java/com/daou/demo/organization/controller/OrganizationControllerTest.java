@@ -1,7 +1,7 @@
 package com.daou.demo.organization.controller;
 
 import com.daou.demo.organization.controller.dto.ResponseDto;
-import com.daou.demo.organization.util.ErrorCode;
+import com.daou.demo.organization.util.exception.ErrorCode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.DisplayName;

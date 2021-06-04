@@ -5,13 +5,10 @@ import com.daou.demo.organization.controller.dto.ResponseDto;
 import com.daou.demo.organization.domain.GroupType;
 import com.daou.demo.organization.domain.Groups;
 import com.daou.demo.organization.repository.GroupsRepository;
-import com.daou.demo.organization.util.BusinessException;
-import com.daou.demo.organization.util.ErrorCode;
+import com.daou.demo.organization.util.exception.BusinessException;
+import com.daou.demo.organization.util.exception.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  *  조직도 반환 서비스
